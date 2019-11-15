@@ -38,6 +38,20 @@ public class MainMenuPanel extends JPanel {
             }
         });
         add(Box.createVerticalGlue());
+
+        // add a button to access doctor operations
+        JButton doctorOperationsButton = new JButton("Doctor Operations");
+        doctorOperationsButton.setMaximumSize(doctorOperationsButton.getPreferredSize());
+        add(doctorOperationsButton);
+        doctorOperationsButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        doctorOperationsButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                DoctorOpsFrame frame = new DoctorOpsFrame();
+                frame.setLocation(300, 300);
+                frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+                frame.setVisible(true);
+            }
+        });
     }
 
     public static final long serialVersionUID = 1;
