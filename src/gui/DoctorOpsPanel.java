@@ -8,13 +8,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * The panel for the operations involving patients. There is a button to add a new
- *      * doctor, a field to access a specific doctor, a button to list all doctors, and an exit
- *      * button to hide the window with this frame.
+ * The panel for the operations involving doctors. There is a button to add a new doctor,
+ * a field to access a specific doctor, a button to list all doctors, and an exit button
+ * to hide the window with this frame.
  */
 public class DoctorOpsPanel extends JPanel {
     /**
-     * Create the panel for the operations involving patients. There is a button to add a new
+     * Create the panel for the operations involving doctors. There is a button to add a new
      * doctor, a field to access a specific doctor, a button to list all doctors, and an exit
      * button to hide the window with this frame.
      */
@@ -22,7 +22,7 @@ public class DoctorOpsPanel extends JPanel {
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         add(Box.createVerticalGlue());
 
-        // add a button to add a new patient
+        // add a button to add a new doctor
         JButton addButton = new JButton("Add doctor");
         addButton.setMaximumSize(addButton.getPreferredSize());
         add(addButton);
@@ -38,7 +38,7 @@ public class DoctorOpsPanel extends JPanel {
         add(Box.createVerticalGlue());
 
         // add a panel with a field to access a specific doctor
-        PatientAccessPanel accessPanel = new PatientAccessPanel();
+        DoctorAccessPanel accessPanel = new DoctorAccessPanel();
         add(accessPanel);
         add(Box.createVerticalGlue());
 
