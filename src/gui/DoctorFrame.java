@@ -29,8 +29,7 @@ public class DoctorFrame extends JFrame {
         if (doctor != null) {
             setTitle(doctor.getName() + " (" + doctorName + ")");
             setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
-            //todo: make a doctor panel based off of patient panel
-            PatientPanel panel = new PatientPanel(null);
+            DoctorPanel panel = new DoctorPanel(doctor);
             add(panel);
         } else
             throw new RuntimeException("Invalid doctor name " + doctorName);
