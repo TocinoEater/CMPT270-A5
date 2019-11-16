@@ -51,6 +51,11 @@ public class DoctorPanel extends JPanel {
         removePatientPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
         removePatientPanel.setMaximumSize(removePatientPanel.getPreferredSize());
 
+        JPanel accessPatientPanel = accessPatientPanel(doctor);
+        add(accessPatientPanel);
+        accessPatientPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
+        accessPatientPanel.setMaximumSize(accessPatientPanel.getPreferredSize());
+
         add(new JLabel("  ")); // blank line in the panel for spacing
         final JButton exitButton = new JButton("Exit");
         add(exitButton);
@@ -132,6 +137,51 @@ public class DoctorPanel extends JPanel {
             }
         });
         return removePatientPanel;
+    }
+
+    /**
+     * A panel to remove a doctor-patient association for this doctor. The panel as a prompt to enter
+     * the patient's health number, a field to enter the name, and a submit button.
+     *
+     * @param doctor the current doctor
+     * @return a panel to associate a new doctor with this patient
+     */
+    private JPanel accessPatientPanel(final Doctor doctor) {
+        JPanel accessPatientPanel = new JPanel();
+        final JTextField textField = new JTextField(10);
+        accessPatientPanel.add(textField);
+        final JButton accessButton = new JButton("Access patient");
+        accessPatientPanel.add(accessButton);
+        accessButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                int healthNum = validateHealthNum(textField);
+
+                if (!doctor.hasPatient(healthNum)) {
+                    JOptionPane.showMessageDialog(DoctorPanel.this,
+                            "entities.Doctor " + doctor.getName()
+                                    + " does not have a patient with health number " + healthNum);
+
+                    textField.setText("");
+                    revalidate();
+                    return;
+                }
+                // open patient panel
+                PatientFrame frame = null;
+                try {
+                    frame = new PatientFrame(healthNum);
+                } catch (RuntimeException e) {
+                    textField.setText("Invalid id: " + textField.getText());
+                    textField.revalidate();
+                    return;
+                }
+                frame.setLocation(300, 300);
+                frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+                frame.setVisible(true);
+                textField.setText("");
+                textField.revalidate();
+            }
+        });
+        return accessPatientPanel;
     }
 
     private int validateHealthNum(JTextField textField) {
