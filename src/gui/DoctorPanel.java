@@ -82,7 +82,7 @@ public class DoctorPanel extends JPanel {
         addButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 int healthNum = validateHealthNum(textField);
-
+                if (healthNum == -1) return;
                 Patient patient = PatientMapAccess.dictionary().get(healthNum);
                 if (patient != null) {
                     // recreate the panel as it has changed
@@ -97,7 +97,7 @@ public class DoctorPanel extends JPanel {
                     build(doctor);
                     revalidate();
                 } else {
-                    textField.setText("Invalid id: " + textField.getText());
+                    textField.setText("Invalid id: " + healthNum);
                     textField.revalidate();
                     return;
                 }
@@ -122,7 +122,7 @@ public class DoctorPanel extends JPanel {
         addButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 int healthNum = validateHealthNum(textField);
-
+                if (healthNum == -1) return;
                 // recreate the panel as it has changed
                 try {
                     doctor.removePatient(healthNum);
@@ -155,7 +155,7 @@ public class DoctorPanel extends JPanel {
         accessButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 int healthNum = validateHealthNum(textField);
-
+                if (healthNum == -1) return;
                 if (!doctor.hasPatient(healthNum)) {
                     JOptionPane.showMessageDialog(DoctorPanel.this,
                             "entities.Doctor " + doctor.getName()
@@ -194,6 +194,9 @@ public class DoctorPanel extends JPanel {
                 textField.setText("Not a valid int: " + textField.getText());
                 textField.revalidate();
             }
+        } else {
+            textField.setText("Empty field");
+            textField.revalidate();
         }
         return healthNum;
     }
