@@ -46,6 +46,11 @@ public class DoctorPanel extends JPanel {
         addPatientPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
         addPatientPanel.setMaximumSize(addPatientPanel.getPreferredSize());
 
+        JPanel removePatientPanel = removePatientPanel(doctor);
+        add(removePatientPanel);
+        removePatientPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
+        removePatientPanel.setMaximumSize(removePatientPanel.getPreferredSize());
+
         add(new JLabel("  ")); // blank line in the panel for spacing
         final JButton exitButton = new JButton("Exit");
         add(exitButton);
@@ -71,17 +76,7 @@ public class DoctorPanel extends JPanel {
         addPatientPanel.add(addButton);
         addButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                String valueAsString = textField.getText();
-                int healthNum = -1;
-                if (valueAsString != null && !valueAsString.isBlank()) {
-                    try {
-                        healthNum = Integer.parseInt(valueAsString);
-                    } catch (NumberFormatException e) {
-                        textField.setText("Not a valid int: " + textField.getText());
-                        textField.revalidate();
-                        return;
-                    }
-                }
+                int healthNum = validateHealthNum(textField);
 
                 Patient patient = PatientMapAccess.dictionary().get(healthNum);
                 if (patient != null) {
@@ -104,6 +99,53 @@ public class DoctorPanel extends JPanel {
             }
         });
         return addPatientPanel;
+    }
+
+    /**
+     * A panel to remove a doctor-patient association for this doctor. The panel as a prompt to enter
+     * the patient's health number, a field to enter the name, and a submit button.
+     *
+     * @param doctor the current doctor
+     * @return a panel to associate a new doctor with this patient
+     */
+    private JPanel removePatientPanel(final Doctor doctor) {
+        JPanel removePatientPanel = new JPanel();
+        final JTextField textField = new JTextField(10);
+        removePatientPanel.add(textField);
+        final JButton addButton = new JButton("Remove patient");
+        removePatientPanel.add(addButton);
+        addButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                int healthNum = validateHealthNum(textField);
+
+                // recreate the panel as it has changed
+                try {
+                    doctor.removePatient(healthNum);
+                    JOptionPane.showMessageDialog(DoctorPanel.this,
+                            "Patient " + healthNum + " successfully removed");
+                } catch (RuntimeException e) {
+                    JOptionPane.showMessageDialog(DoctorPanel.this, e.getMessage());
+                }
+                removeAll();
+                build(doctor);
+                revalidate();
+            }
+        });
+        return removePatientPanel;
+    }
+
+    private int validateHealthNum(JTextField textField) {
+        String valueAsString = textField.getText();
+        int healthNum = -1;
+        if (valueAsString != null && !valueAsString.isBlank()) {
+            try {
+                healthNum = Integer.parseInt(valueAsString);
+            } catch (NumberFormatException e) {
+                textField.setText("Not a valid int: " + textField.getText());
+                textField.revalidate();
+            }
+        }
+        return healthNum;
     }
 
     public static final long serialVersionUID = 1;
