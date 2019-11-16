@@ -44,7 +44,7 @@ public class DoctorAddPanel extends JPanel {
         prompt.setAlignmentX(Component.CENTER_ALIGNMENT);
         add(Box.createVerticalGlue());
 
-        // add a panel with the field for the entry of the patient's name
+        // add a panel with the field for the entry of the doctor's name
         namePanel = new ValueEntryPanel("name");
         namePanel.setMaximumSize(namePanel.getPreferredSize());
         add(namePanel);

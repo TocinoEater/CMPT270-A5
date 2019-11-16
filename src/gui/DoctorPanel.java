@@ -71,7 +71,7 @@ public class DoctorPanel extends JPanel {
 
     /**
      * A panel to add a doctor-patient association for this doctor. The panel as a prompt to enter
-     * the doctor's name, and a field to enter the name.
+     * the patient's health number, a field to enter the name, and a submit button.
      *
      * @param doctor the current doctor
      * @return a panel to associate a new patient with this doctor
@@ -120,9 +120,9 @@ public class DoctorPanel extends JPanel {
         JPanel removePatientPanel = new JPanel();
         final JTextField textField = new JTextField(10);
         removePatientPanel.add(textField);
-        final JButton addButton = new JButton("Remove patient");
-        removePatientPanel.add(addButton);
-        addButton.addActionListener(new ActionListener() {
+        final JButton removeButton = new JButton("Remove patient");
+        removePatientPanel.add(removeButton);
+        removeButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 int healthNum = validateHealthNum(textField);
                 if (healthNum == -1) return;
