@@ -3,6 +3,7 @@ package gui;
 import containers.PatientMapAccess;
 import entities.Doctor;
 import entities.Patient;
+import entities.Surgeon;
 
 import javax.swing.*;
 import java.awt.*;
@@ -39,7 +40,9 @@ public class DoctorPanel extends JPanel {
     private void build(Doctor doctor) {
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         add(new JLabel("Name: " + doctor.getName()));
-        // todo: add doctor specialty if applicable
+        if (doctor instanceof Surgeon) {
+            add(new JLabel("Specialty: Surgeon"));
+        }
 
         JPanel addPatientPanel = addPatientPanel(doctor);
         add(addPatientPanel);

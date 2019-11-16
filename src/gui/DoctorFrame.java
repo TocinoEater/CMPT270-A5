@@ -4,6 +4,7 @@ import containers.DoctorMapAccess;
 import containers.PatientMapAccess;
 import entities.Doctor;
 import entities.Patient;
+import entities.Surgeon;
 
 import javax.swing.*;
 
@@ -26,8 +27,9 @@ public class DoctorFrame extends JFrame {
      */
     public DoctorFrame(String doctorName) {
         Doctor doctor = DoctorMapAccess.dictionary().get(doctorName);
+        boolean isSurgeon = doctor instanceof Surgeon;
         if (doctor != null) {
-            setTitle(doctor.getName() + " (" + doctorName + ")");
+            setTitle(doctor.getName() + (isSurgeon ? "(Surgeon)" : ""));
             setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
             DoctorPanel panel = new DoctorPanel(doctor);
             add(panel);
