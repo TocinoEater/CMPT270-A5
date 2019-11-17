@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 /**
  * The panel for the access of a specific doctor. It has a prompt label, and a text field for the
- * entry of the doctor's health number. When the Enter key is pressed, the doctor name entered is
+ * entry of the doctor's name. When the Enter key is pressed, the doctor name entered is
  * used to create a new window with the doctor's data and operations on the doctor.
  */
 public class DoctorAccessPanel extends JPanel {

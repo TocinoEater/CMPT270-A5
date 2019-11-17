@@ -5,7 +5,7 @@ import startup.HospitalSystem;
 import javax.swing.*;
 
 /**
- * The frame for the window to display the operations that involve patients.
+ * The frame for the window to display the operations that involve doctors.
  */
 public class DoctorOpsFrame extends JFrame {
     /** The standard width for the frame. */
@@ -25,7 +25,7 @@ public class DoctorOpsFrame extends JFrame {
     }
 
     /**
-     * A main to run the GUI version of the hospital system that only involves patient operations
+     * A main to run the GUI version of the hospital system that only involves doctor operations
      * and the ward.
      */
     public static void main(String[] args) {

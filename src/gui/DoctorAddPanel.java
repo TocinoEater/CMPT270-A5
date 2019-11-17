@@ -1,6 +1,5 @@
 package gui;
 
-import commands.AddPatient;
 import commands.NewDoctor;
 
 import javax.swing.*;

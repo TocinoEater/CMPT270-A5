@@ -8,17 +8,18 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import containers.PatientMapAccess;
-
 /**
- * The panel for the operations involving patients. There is a button to access patient operations.
+ * The main menu panel to access operations for patients, doctors, the ward, and exit.
+ * There is a button to access patient operations, a button to access doctor operations,
+ * a button to access ward information, and a button to exit the program.
  */
 public class MainMenuPanel extends JPanel {
     /**
-     * Create the panel for the main menu. There is a button to access patient operations.
+     * Create the panel for the main menu. There is a button to access patient operations,
+     * , a button to access doctor operations, a button to access ward information, and a
+     * button to exit the program.
      */
     public MainMenuPanel() {
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
@@ -69,7 +70,7 @@ public class MainMenuPanel extends JPanel {
         });
         add(Box.createVerticalGlue());
 
-        // add a button to access ward information
+        // add a button to exit
         JButton exitButton = new JButton("Exit");
         exitButton.setMaximumSize(exitButton.getPreferredSize());
         add(exitButton);

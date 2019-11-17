@@ -70,8 +70,7 @@ public class DoctorPanel extends JPanel {
     }
 
     /**
-     * A panel to add a doctor-patient association for this doctor. The panel as a prompt to enter
-     * the patient's health number, a field to enter the name, and a submit button.
+     * A panel to add a doctor-patient association for this doctor. The panel has a field to enter the name and a submit button.
      *
      * @param doctor the current doctor
      * @return a panel to associate a new patient with this doctor
@@ -110,8 +109,7 @@ public class DoctorPanel extends JPanel {
     }
 
     /**
-     * A panel to remove a doctor-patient association for this doctor. The panel as a prompt to enter
-     * the patient's health number, a field to enter the name, and a submit button.
+     * A panel to remove a doctor-patient association for this doctor. The panel has a field to enter the name and a submit button.
      *
      * @param doctor the current doctor
      * @return a panel to associate a new doctor with this patient
@@ -143,8 +141,7 @@ public class DoctorPanel extends JPanel {
     }
 
     /**
-     * A panel to remove a doctor-patient association for this doctor. The panel as a prompt to enter
-     * the patient's health number, a field to enter the name, and a submit button.
+     * A panel to access a patient associated with this doctor. The panel has a field to enter the name and a submit button.
      *
      * @param doctor the current doctor
      * @return a panel to associate a new doctor with this patient
@@ -187,6 +184,11 @@ public class DoctorPanel extends JPanel {
         return accessPatientPanel;
     }
 
+    /**
+     * Validates the health number to see that it's a valid integer, or blank
+     * @param textField
+     * @return the health number, which is either a -1 to show invalidity or otherwise
+     */
     private int validateHealthNum(JTextField textField) {
         String valueAsString = textField.getText();
         int healthNum = -1;

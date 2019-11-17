@@ -1,9 +1,7 @@
 package gui;
 
 import containers.DoctorMapAccess;
-import containers.PatientMapAccess;
 import entities.Doctor;
-import entities.Patient;
 import entities.Surgeon;
 
 import javax.swing.*;
@@ -22,8 +20,7 @@ public class DoctorFrame extends JFrame {
     /**
      * Create the frame to display the information for a doctor.
      *
-     * @param doctorName the health number of the doctor
-     * @precond healthNum is the health number of a doctor
+     * @param doctorName the name of the doctor
      */
     public DoctorFrame(String doctorName) {
         Doctor doctor = DoctorMapAccess.dictionary().get(doctorName);
