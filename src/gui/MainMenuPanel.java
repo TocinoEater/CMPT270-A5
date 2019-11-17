@@ -52,6 +52,33 @@ public class MainMenuPanel extends JPanel {
                 frame.setVisible(true);
             }
         });
+        add(Box.createVerticalGlue());
+
+        // add a button to access ward information
+        JButton wardInformationButton = new JButton("Ward Information");
+        wardInformationButton.setMaximumSize(wardInformationButton.getPreferredSize());
+        add(wardInformationButton);
+        wardInformationButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        wardInformationButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                WardFrame frame = new WardFrame();
+                frame.setLocation(300,300);
+                frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+                frame.setVisible(true);
+            }
+        });
+        add(Box.createVerticalGlue());
+
+        // add a button to access ward information
+        JButton exitButton = new JButton("Exit");
+        exitButton.setMaximumSize(exitButton.getPreferredSize());
+        add(exitButton);
+        exitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        exitButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
     }
 
     public static final long serialVersionUID = 1;
